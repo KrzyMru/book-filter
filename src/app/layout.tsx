@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NavigationBar from "./components/navigation-bar";
 
 export const metadata: Metadata = {
   title: "Book Filter",
@@ -9,9 +10,11 @@ export const metadata: Metadata = {
 const RootLayout = ({ children, }: Readonly<{ children: React.ReactNode; }>) => {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <div className="w-full bg-red-100 h-20">Search bar here</div>
-        {children}
+      <body className="overflow-hidden antialiased">
+        <NavigationBar />
+        <div className="h-[calc(100dvh-66px)]">
+          {children}
+        </div>
       </body>
     </html>
   );

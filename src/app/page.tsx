@@ -1,10 +1,10 @@
 import React from "react";
-import { WorkTitleSearchResponse } from "./types";
+import { WorkSearchResponse } from "./types";
 import { WorkSnippetProps } from "./components/types";
 import WorkSnippet from "./components/work-snippet";
 
 const Page = async () => {
-  const newestWorksResponse = await fetch(`https://openlibrary.org/search.json?q=*&limit=10&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i&first_publish_year=${new Date().getFullYear()}&sort=rating`, {
+  const newestWorksResponse = await fetch(`https://openlibrary.org/search.json?q=*&limit=10&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i&first_publish_year=${new Date().getFullYear()}&sort=readinglog`, {
     method: "GET",
     headers: {
         "Accept": "application/json",
@@ -29,24 +29,24 @@ const Page = async () => {
     },
   });
 
-  const newestWorksSearchResponse: WorkTitleSearchResponse = await newestWorksResponse.json();
+  const newestWorksSearchResponse: WorkSearchResponse = await newestWorksResponse.json();
   const newestWorks: WorkSnippetProps[] = newestWorksSearchResponse.docs;
-  const trendingWorksSearchResponse: WorkTitleSearchResponse = await trendingWorksResponse.json();
+  const trendingWorksSearchResponse: WorkSearchResponse = await trendingWorksResponse.json();
   const trendingWorks: WorkSnippetProps[] = trendingWorksSearchResponse.docs;
-  const mostReadWorksSearchResponse: WorkTitleSearchResponse = await mostReadWorksResponse.json();
+  const mostReadWorksSearchResponse: WorkSearchResponse = await mostReadWorksResponse.json();
   const mostReadWorks: WorkSnippetProps[] = mostReadWorksSearchResponse.docs;
-  const mostAnticipatedWorksSearchResponse: WorkTitleSearchResponse = await mostAnticipatedWorksResponse.json();
+  const mostAnticipatedWorksSearchResponse: WorkSearchResponse = await mostAnticipatedWorksResponse.json();
   const mostAnticipatedWorks: WorkSnippetProps[] = mostAnticipatedWorksSearchResponse.docs;
 
   return (
-    <div className="flex flex-col">
-      
+    <div className="h-full flex flex-col overflow-y-auto">
+
       <div className="mt-3 mx-5 mb-5">
         <div className="mb-1">
-          <p className="text-2xl text-gray-900">New releases</p>
+          <p className="text-2xl text-gray-900">New Releases</p>
           <p className="text-sm text-gray-400">Popular books that released this year</p>
         </div>
-        <ul className="flex gap-2 overflow-x-auto">
+        <ul className="flex overflow-x-auto">
           {newestWorks.map((work) => (
             <li key={work.key}>
               <WorkSnippet work={work} />
@@ -57,10 +57,10 @@ const Page = async () => {
 
       <div className="mt-3 mx-5 mb-5">
         <div className="mb-1">
-          <p className="text-2xl text-gray-900">Trending reads</p>
+          <p className="text-2xl text-gray-900">Trending Reads</p>
           <p className="text-sm text-gray-400">The books everyone's reading right now</p>
         </div>
-        <ul className="flex gap-2 overflow-x-auto">
+        <ul className="flex overflow-x-auto">
           {trendingWorks.map((work) => (
             <li key={work.key}>
               <WorkSnippet work={work} />
@@ -74,7 +74,7 @@ const Page = async () => {
           <p className="text-2xl text-gray-900">Most Widely Read</p>
           <p className="text-sm text-gray-400">Books read by the most people</p>
         </div>
-        <ul className="flex gap-2 overflow-x-auto">
+        <ul className="flex overflow-x-auto">
           {mostReadWorks.map((work) => (
             <li key={work.key}>
               <WorkSnippet work={work} />
@@ -85,10 +85,10 @@ const Page = async () => {
 
       <div className="mt-3 mx-5 mb-5">
         <div className="mb-1">
-          <p className="text-2xl text-gray-900">Most anticipated</p>
-          <p className="text-sm text-gray-400">Highly awaited by the reading community</p>
+          <p className="text-2xl text-gray-900">Top of Readers' Lists</p>
+          <p className="text-sm text-gray-400">Popular among readers planning their next read</p>
         </div>
-        <ul className="flex gap-2 overflow-x-auto">
+        <ul className="flex overflow-x-auto">
           {mostAnticipatedWorks.map((work) => (
             <li key={work.key}>
               <WorkSnippet work={work} />
@@ -96,7 +96,6 @@ const Page = async () => {
           ))}
         </ul>
       </div>
-
 
     </div>
   );

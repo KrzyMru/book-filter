@@ -1,22 +1,12 @@
-import { WorkSnippetProps } from "@/app/components/types";
-
 interface WorkDescriptorProps {
     key: string,
     title: string,
-    description: string | {
+    description?: string | {
         type: string,
         value: string,
     },
-    subjects: string[],
-    created: {
-        type: string,
-        value: string,
-    },
-    last_modified: {
-        type: string,
-        value: string,
-    },
-    authors: {
+    subjects?: string[],
+    authors?: {
         author: {
             key: string,
         },
@@ -26,35 +16,42 @@ interface WorkDescriptorProps {
     }[],
 }
 
-interface WorkKeySnippetProps extends WorkSnippetProps {
-    editions: {
-        start: number,
-        num_found: number,
-        docs: Edition[],
-    }
-}
-
-interface WorkKeySearchResponse {
+interface AuthorSnippetSearchResponse {
     start: number,
     num_found: number,
-    docs: WorkKeySnippetProps[],
+    docs: AuthorSnippet[],
 }
 
-interface AuthorSearchResponse {
-    start: number,
-    num_found: number,
-    docs: Author[],
-}
-
-interface Author {
-    name: string,
+interface AuthorSnippet {
     key: string,
+    name: string,
+    birth_date?: string,
+    death_date?: string,
+    top_work?: string,
+    work_count?: number,
+    ratings_average?: number,
+    ratings_count?: number,
+    want_to_read_count?: number,
+    already_read_count?: number,
+    currently_reading_count?: number,
 }
 
-interface Edition {
+interface WorkEditionSearchResponse {
+    size: number,
+    entries: EditionSnippetProps[],
+}
+
+interface EditionSnippetProps {
     key: string,
     title: string,
-    cover_i: string,
+    publish_date?: string,
+    edition_name?: string,
+    covers?: string[],
+    publishers?: string[],
+    contributors?: {
+        role: string,
+        name: string,
+    }[],
 }
 
-export type { WorkDescriptorProps, WorkKeySearchResponse, WorkKeySnippetProps, AuthorSearchResponse, Author, Edition }
+export type { WorkDescriptorProps, AuthorSnippetSearchResponse, WorkEditionSearchResponse, AuthorSnippet, EditionSnippetProps }

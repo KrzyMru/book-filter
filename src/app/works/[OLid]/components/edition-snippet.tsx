@@ -1,29 +1,36 @@
-"use client"
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Edition } from "../types";
+import { EditionSnippetProps } from "../types";
+import Link from "next/link";
 
-const EditionSnippet = ({ edition }: { edition: Edition }) => {
-    const router = useRouter();
+const EditionSnippet = ({ edition }: { edition: EditionSnippetProps }) => {
+    const bestCover = edition.covers && edition.covers?.length > 0 ? edition.covers[0] : undefined;
 
     return (
-        <button 
-            className="flex flex-col shadow-sm cursor-pointer rounded-br-xl rounded-tr-xl inset-ring-gray-50 hover:shadow-md hover:inset-ring-2"
+        <Link
+            className="flex h-full flex-col cursor-pointer rounded-br-xl rounded-tr-xl group p-3 outline-none focus:inset-ring-3"
             title={edition.title}
-            onClick={() => router.push(edition.key)}
+            href={edition.key}
         >
             <div className="relative w-[120px] aspect-[2/3]">
                 <Image 
-                    src={edition.cover_i ? 
-                        `https://covers.openlibrary.org/b/id/${edition.cover_i}-M.jpg?default=false` :
+                    src={
+                        bestCover ? 
+                        `https://covers.openlibrary.org/b/id/${bestCover}-M.jpg?default=false` :
                         "/fallback-cover.jpg"
                     }
                     alt="No cover"
                     fill
-                    className="-z-1 rounded-br-xl rounded-tr-xl"
+                    className="rounded-br-xl rounded-tr-xl shadow-md transition-[scale] duration-350 group-hover:scale-103"
                 />
             </div>
-        </button>
+            <div className="flex flex-col mt-1">
+                <p className="text-sm text-gray-900">{edition.edition_name}</p>
+                <p className="text-sm text-gray-600 line-clamp-2">
+                    {edition.publishers?.join(', ')}
+                </p>
+                <p className="text-sm text-gray-600">{edition.publish_date}</p>
+            </div>
+        </Link>
     );
 }
 

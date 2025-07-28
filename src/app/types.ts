@@ -1,9 +1,9 @@
 import { WorkSnippetProps } from "./components/types";
 
-interface WorkTitleSearchResponse {
+interface WorkSearchResponse {
     start: number,
     num_found: number,
     docs: WorkSnippetProps[],
 }
 
-export type { WorkTitleSearchResponse }
+export type { WorkSearchResponse }
