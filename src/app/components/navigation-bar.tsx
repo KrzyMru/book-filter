@@ -44,7 +44,7 @@ const NavigationBar = () => {
                 </div>
                 <div className={`${searchOpen ? 'hidden' : 'flex'} justify-between items-center px-3 py-4`}>
                     <button 
-                        className="cursor-pointer"
+                        className="cursor-pointer shrink-0"
                         onClick={() => setSearchOpen(true)}
                     >
                         <Image 
@@ -55,7 +55,7 @@ const NavigationBar = () => {
                     </button>
                     <Link 
                         href={"/"}
-                        className="text-2xl font-bold text-gray-900"
+                        className="text-2xl font-bold text-gray-900 px-2"
                     >
                         book-filter
                     </Link>

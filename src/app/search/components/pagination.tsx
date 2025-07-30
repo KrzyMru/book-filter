@@ -7,7 +7,7 @@ const Pagination = (props: PaginationProps) => {
         return (
             <Link 
                 href={`/search?query=${query}&searchBy=${searchBy}&page=${innerPage}`}
-                className={`rounded-full py-2 px-4 border-1 border-gray-300 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100`}
+                className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100`}
             >
                 {innerPage}
             </Link> 

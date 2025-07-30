@@ -18,7 +18,7 @@ const EditionSnippet = ({ edition }: { edition: EditionSnippetProps }) => {
                         `https://covers.openlibrary.org/b/id/${bestCover}-M.jpg?default=false` :
                         "/fallback-cover.jpg"
                     }
-                    alt="No cover"
+                    alt="Edition cover"
                     fill
                     className="rounded-br-xl rounded-tr-xl shadow-md transition-[scale] duration-350 group-hover:scale-103"
                 />

@@ -29,7 +29,7 @@ const WorkSnippet = ({ work }: { work: WorkSnippetProps }) => {
                 <p className="text-xs text-center text-gray-600">{`${work.ratings_count ?? 0} reviews`}</p>
                 <div className="flex items-center justify-between">
                     <ClientRating 
-                        initialValue={work.ratings_average ?? 0} 
+                        initialValue={work.ratings_average ?? 0}
                         className="inline size-[18px] -mt-2"
                     />
                     <p className="text-sm text-gray-900 font-semibold">{work.ratings_average ? work.ratings_average.toFixed(2) : 0}</p>

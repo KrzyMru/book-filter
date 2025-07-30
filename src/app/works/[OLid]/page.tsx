@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AuthorSnippet, AuthorSnippetSearchResponse, EditionSnippetProps, WorkDescriptorProps, WorkEditionSearchResponse } from "./types";
+import { EditionSnippetProps, WorkDescriptorProps, WorkEditionSearchResponse } from "./types";
 import Link from "next/link";
 import EditionSnippet from "./components/edition-snippet";
 import ClientRating from "../../components/client-rating";
@@ -8,7 +8,7 @@ import BookOpen from "../../components/assets/book-open.svg";
 import Bookshelf from "../../components/assets/bookshelf.svg";
 import ReactMarkdown from "react-markdown";
 import { WorkSnippetProps } from "@/app/components/types";
-import { WorkSearchResponse } from "@/app/types";
+import { AuthorSnippet, AuthorSnippetSearchResponse, WorkSearchResponse } from "@/app/types";
 
 const Page = async ({ params }: { params: Promise<{ OLid: string }>,
 }) => {
@@ -49,9 +49,9 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
     });
     const authorSnippetsSearchResponse: AuthorSnippetSearchResponse = await authorSnippetsRequest.json();
     const authorSnippets: AuthorSnippet[] = authorSnippetsSearchResponse.docs;
-
+    
     return (
-        <div className="h-full flex flex-col overflow-y-auto py-3 px-8 md:flex-row md:justify-center">
+        <div className="h-full flex flex-col overflow-y-auto py-3 px-3 [transition:padding_350ms] xs:px-8 md:flex-row md:justify-center">
 
             <div className="flex flex-col items-center md:max-w-md md:sticky md:top-0 md:h-full md:pr-12">
                 <div className="relative w-[200px] aspect-[2/3] h-fit">
@@ -67,7 +67,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                     />
                 </div>
                 <p className="text-2xl text-center font-semibold text-gray-900">{workDescriptor.title}</p>
-                <ul className="flex gap-1">
+                <ul className="flex gap-1 flex-wrap">
                     {
                         authorSnippets?.map((author, index) => (
                             <li key={author.key}>
@@ -167,27 +167,23 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                                         <Link
                                             href={`/authors/${author.key}`}
                                             title={`See more information about ${author.name}`}
-                                            className="text-sm text-gray-600 mt-1 w-fit hover:underline"
+                                            className="text-sm text-gray-600 mt-2 w-fit hover:underline"
                                         >
                                             {author.name}
                                         </Link>
                                         {author.birth_date &&
                                             <p className="text-xs text-gray-600 italic">{`${author.death_date ? author.birth_date : 'born '+author.birth_date}${author.death_date ? ' - '+author.death_date : ''}`}</p>
                                         }
-                                        {author.ratings_average && 
-                                            <div className="flex items-center gap-1">
-                                                <ClientRating 
-                                                    initialValue={author.ratings_average}
-                                                    className="inline size-[14px] -mt-2" 
-                                                />
-                                                <p className="text-xs text-gray-900 font-semibold">{author.ratings_average.toFixed(2)}</p>
-                                            </div>
-                                        }
-                                        {author.ratings_count && 
-                                            <p className="text-xs text-gray-600">{`${author.ratings_count} ratings${author.work_count ? ' · '+author.work_count+' works' : ''}`}</p>
-                                        }
+                                        <div className="flex items-center gap-1">
+                                            <ClientRating 
+                                                initialValue={author.ratings_average ?? 0}
+                                                className="inline size-[14px] -mt-2" 
+                                            />
+                                            <p className="text-xs text-gray-900 font-semibold">{author.ratings_average ? author.ratings_average.toFixed(2) : 0}</p>
+                                        </div>
+                                        <p className="text-xs text-gray-600">{`${author.ratings_count ?? 0} ratings${author.work_count ? ' · '+author.work_count+' works' : ''}`}</p>
                                         {index !== authorSnippets.length - 1 &&
-                                            <div className="my-2 mx-10 border-b-1 border-gray-300" />
+                                            <div className="mt-3 mx-10 border-b-1 border-gray-300" />
                                         }
                                     </div>
                                 </li>

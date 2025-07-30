@@ -13,7 +13,7 @@ const WorkSnippetRectangle = ({ work }: { work: WorkSnippetProps }) => {
             title={work.title}
             href={work.key}
         >
-            <div className="relative w-[140px] aspect-[2/3] h-[210px]">
+            <div className="relative aspect-[2/3] h-[210px] w-[140px]">
                 <Image 
                     src={
                         work.cover_i ? 
@@ -26,7 +26,7 @@ const WorkSnippetRectangle = ({ work }: { work: WorkSnippetProps }) => {
                 />
             </div>
             <div className="flex-1 flex flex-col px-2 justify-between">
-                <p className="text-xl text-gray-900">{work.title}</p>
+                <p className="text-xl text-gray-900 line-clamp-2">{work.title}</p>
                 <div>
                     <div className="flex items-center gap-3">
                         <div className="flex flex-col">
@@ -36,7 +36,7 @@ const WorkSnippetRectangle = ({ work }: { work: WorkSnippetProps }) => {
                                     className="inline size-[18px] -mt-2"
                                     initialValue={work.ratings_average ?? 0} 
                                 />
-                                <p className="text-sm text-gray-600">{`${work.ratings_count ?? 0} ratings`}</p>
+                                <p className="text-sm text-gray-600 hidden xs:block">{`${work.ratings_count ?? 0} ratings`}</p>
                             </div>
                         </div>
                     </div>

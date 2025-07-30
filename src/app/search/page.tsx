@@ -46,7 +46,7 @@ const Page = async (props: ParsedSearchParams) => {
 
     return (
         <div className="h-full flex flex-col justify-between">
-            <div className="px-5 py-3 overflow-y-auto">
+            <div className="px-3 py-3 overflow-y-auto [transition:padding_350ms] xs:px-5">
                 <div className="mb-1">
                     <p className="text-2xl text-gray-900">{`Results for \"${query}\"`}</p>
                     <p className="text-sm text-gray-400">{`Found ${resultsSearchData.num_found} works matching this query`}</p>
