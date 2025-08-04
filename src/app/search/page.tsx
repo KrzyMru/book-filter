@@ -84,12 +84,9 @@ const Page = async (props: SearchParams) => {
                     <p className="text-2xl text-gray-900">{`Results ${query && query !== "*" ? 'for \"'+query+'\"' : ''}`}</p>
                     <p className="text-sm text-gray-400">{`Found ${resultsSearchData.num_found} works matching this query`}</p>
                 </div>
-                <ul className="grid gap-[2px] bg-gray-300 lg:grid-cols-2 2xl:grid-cols-3">
+                <ul className="grid lg:grid-cols-2 2xl:grid-cols-3">
                     {results.map((work) => (
-                        <li 
-                            key={work.key} 
-                            className="bg-white"
-                        >
+                        <li key={work.key}>
                             <WorkSnippetRectangle work={work} />
                         </li>
                     ))}

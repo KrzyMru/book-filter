@@ -34,7 +34,7 @@ const NewestWorks = async () => {
         <li key="moreNewest">
           <Link
             className="cursor-pointer group"
-            href={`/search?ratings_min=10&publish_year_min=${new Date().getFullYear()-1}&sort=readinglog&page=1`}
+            href={`/search?ratings_min=10&publish_year_min=${new Date().getFullYear()-1}&sort=reading log&page=1`}
             title="See more"
           >
             <div className="w-full flex justify-center">

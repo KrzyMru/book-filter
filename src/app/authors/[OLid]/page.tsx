@@ -238,7 +238,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                         <li key="moreWorks">
                             <Link
                                 className="cursor-pointer group"
-                                href={`/search?author_key=${OLid}&sort=readinglog&page=1`}
+                                href={`/search?author_key=${OLid}&sort=reading log&page=1`}
                                 title="See more"
                             >
                                 <div className="w-full flex justify-center">
