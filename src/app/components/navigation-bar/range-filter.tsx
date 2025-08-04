@@ -5,7 +5,7 @@ import React from "react";
 
 const RangeFilter = (props: RangeFilterProps) => {
     const { values, setValues, min, max, step, label, maxAsterisk = false } = { ...props }
-    const rangeRef: any = React.useRef<Range|null>(null);
+    const rangeRef = React.useRef<Range|null>(null);
 
     return (
         <div className="flex justify-center flex-wrap bg-gray-200 pt-7 pb-1 px-5 rounded-xl border-2 border-gray-300">
@@ -59,7 +59,7 @@ const RangeFilter = (props: RangeFilterProps) => {
                 id={label}
                 className="text-sm text-gray-900 font-semibold"
                 onClick={(e) => {
-                    rangeRef.current.thumbRefs[0].current.focus();
+                    rangeRef.current?.thumbRefs[0].current.focus();
                 }}
             >
                 {label}

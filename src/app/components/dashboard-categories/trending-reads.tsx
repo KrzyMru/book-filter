@@ -23,7 +23,7 @@ const TrendingReads = async () => {
     <div>
       <div className="mb-1">
         <p className="text-2xl text-gray-900">Trending Reads</p>
-        <p className="text-sm text-gray-400">The books everyone's reading right now</p>
+        <p className="text-sm text-gray-400">The books everyone&apos;s reading right now</p>
       </div>
       <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
         {trendingWorks.map((work) => (

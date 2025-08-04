@@ -21,7 +21,7 @@ const RandomDaily = async () => {
   return (
     <div>
       <div className="mb-1">
-        <p className="text-2xl text-gray-900">Today's Picks</p>
+        <p className="text-2xl text-gray-900">Today&apos;s Picks</p>
         <p className="text-sm text-gray-400">A mix of frequently rated titles, picked just for today</p>
       </div>
       <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
