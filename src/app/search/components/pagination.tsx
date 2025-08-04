@@ -2,11 +2,20 @@ import Link from "next/link"
 import { PaginationProps } from "./types";
 
 const Pagination = (props: PaginationProps) => {
-    const { query, searchBy, page, totalPages } = { ...props };
+    const { query, sort, sort_direction, page, totalPages, ...filters } = { ...props };
+    
+    const parsedQuery = query ?? "";
+    const filterString = Object.entries(filters)
+        .filter(([_, value]) => value !== undefined)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&');
+    const parsedFilters = filterString ? '&'+filterString : "";
+    const parsedSortDirection = sort_direction ? `&sort_direction=${sort_direction}` : "";
+
     const Page = ({ innerPage } : { innerPage: number }) => {
         return (
             <Link 
-                href={`/search?query=${query}&searchBy=${searchBy}&page=${innerPage}`}
+                href={`/search?query=${parsedQuery}${parsedFilters}&sort=${sort}${parsedSortDirection}&page=${innerPage}`}
                 className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100`}
             >
                 {innerPage}

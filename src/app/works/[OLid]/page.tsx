@@ -15,7 +15,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
     const { OLid } = await params;
 
     // This is needed because all of those endpoints contain different info
-    const workSnippetResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(`key:(/works/${OLid})`)}&limit=1&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i`, {
+    const workSnippetResponse = await fetch(`https://openlibrary.org/search.json?q=key:(/works/${OLid})&limit=1&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i`, {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -40,8 +40,9 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
     const workEditionSearchResponse: WorkEditionSearchResponse = await workEditionsResponse.json();
     const workEditions: EditionSnippetProps[]  = workEditionSearchResponse.entries;
 
-    const authorKeys = workDescriptor.authors ? workDescriptor.authors.map(author => author.author.key) : []; 
-    const authorSnippetsRequest = await fetch(`https://openlibrary.org/search/authors.json?q=${encodeURIComponent(`key:(${authorKeys.join(' OR ')})`)}`, {
+    const authorKeys = workDescriptor.authors ? workDescriptor.authors.map(author => author.author.key) : [];
+    const parsedAuthorKeys = authorKeys.length > 0 ? `key:(${authorKeys.join(' OR ')})` : '';
+    const authorSnippetsRequest = await fetch(`https://openlibrary.org/search/authors.json?q=${parsedAuthorKeys}`, {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -101,14 +102,14 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                         {typeof(workDescriptor.description) === "string" ? workDescriptor.description : workDescriptor.description?.value}
                     </ReactMarkdown>
                 </div>
-                <div className="w-full mt-6">
+                <div className={`w-full mt-6 ${workDescriptor.subjects && workDescriptor.subjects?.length > 0 ? 'block' : 'hidden'}`}>
                     <p className="text-base text-gray-600">Genres</p>
                     <ul className="flex flex-wrap">
                         {
                             workDescriptor.subjects?.map((subject, index) => (
                                 <li key={index}>
                                     <Link
-                                        href={`/subjects/${encodeURIComponent(subject)}`}
+                                        href={`/search?subjects=${subject}&sort=rating&sort_direction=desc&page=1`}
                                         title={subject}
                                         className="text-base font-semibold whitespace-nowrap text-gray-900 mr-4 underline decoration-2 underline-offset-5 decoration-green-500 hover:decoration-green-300"
                                     >
@@ -119,7 +120,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                         }
                     </ul>
                 </div> 
-                <div className="w-full flex justify-around py-3 gap-3 border-y-1 border-gray-300 mt-6">
+                <div className="w-full flex flex-wrap justify-around py-3 gap-3 border-y-1 border-gray-300 mt-6">
                     <div className="flex flex-col items-center">
                         <div className="flex gap-2 items-center">
                             <Image 
@@ -193,14 +194,14 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                 </div>
                 <div className="w-full mt-4">
                     <p className="text-base text-gray-600">Editions</p>
-                    <ul className="flex overflow-x-auto">
+                    <ul className="grid grid-cols-1 2xs:grid-cols-2 xs:grid-cols-3">
                         {
                             workEditions.sort((editionA, editionB) => {
                                 const editionACover = editionA.covers?.length ? 1 : 0;
                                 const editionBCover = editionB.covers?.length ? 1 : 0;
                                 return editionBCover - editionACover;
                             }).map((edition) => (
-                                <li key={edition.key}>
+                                <li key={edition.key} className="max-w-[360px]">
                                     <EditionSnippet edition={edition} />
                                 </li>
                             ))

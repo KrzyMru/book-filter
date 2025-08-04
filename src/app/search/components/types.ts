@@ -1,6 +1,7 @@
-import { ParsedSearchParams } from "../types";
+import { SearchParams } from "../types";
 
-interface PaginationProps extends ParsedSearchParams {
+interface PaginationProps extends Omit<SearchParams, "page"> {
+    page: number,
     totalPages: number,
 }
 

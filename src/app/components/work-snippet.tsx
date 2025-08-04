@@ -13,7 +13,7 @@ const WorkSnippet = ({ work }: { work: WorkSnippetProps }) => {
             title={work.title}
             href={work.key}
         >
-            <div className="relative w-[140px] aspect-[2/3]">
+            <div className="relative w-[140px] aspect-[2/3] self-center">
                 <Image 
                     src={
                         work.cover_i ? 
@@ -26,7 +26,7 @@ const WorkSnippet = ({ work }: { work: WorkSnippetProps }) => {
                 />
             </div>
             <div className="flex flex-col px-2 pt-1">
-                <p className="text-xs text-center text-gray-600">{`${work.ratings_count ?? 0} reviews`}</p>
+                <p className="text-xs text-center text-gray-600">{`${work.ratings_count ?? 0} ratings`}</p>
                 <div className="flex items-center justify-between">
                     <ClientRating 
                         initialValue={work.ratings_average ?? 0}

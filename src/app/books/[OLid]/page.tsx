@@ -18,7 +18,8 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>}) => {
     const bestCover = edition.covers && edition.covers?.length > 0 ? edition.covers[0] : undefined;
 
     const authorKeys = edition.authors ? edition.authors.map(author => author.key) : []; 
-    const authorSnippetsRequest = await fetch(`https://openlibrary.org/search/authors.json?q=${encodeURIComponent(`key:(${authorKeys.join(' OR ')})`)}`, {
+    const parsedAuthorKeys = authorKeys.length > 0 ? `key:(${authorKeys.join(' OR ')})` : '';
+    const authorSnippetsRequest = await fetch(`https://openlibrary.org/search/authors.json?q=${parsedAuthorKeys}`, {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -28,7 +29,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>}) => {
     const authorSnippets: AuthorSnippet[] = authorSnippetsSearchResponse.docs;
 
     const relatedWorkKeys = edition.works ? edition.works.map(work => work.key) : []; 
-    const relatedWorksResponse = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(`key:(${relatedWorkKeys.join(' OR ')})`)}&limit=10&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i`, {
+    const relatedWorksResponse = await fetch(`https://openlibrary.org/search.json?q=key:(${relatedWorkKeys.join(' OR ')})&limit=10&fields=key,title,ratings_average,ratings_count,want_to_read_count,currently_reading_count,already_read_count,cover_i`, {
         method: "GET",
         headers: {
             "Accept": "application/json",
@@ -119,9 +120,9 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>}) => {
             </div>   
             <div className="w-full mt-6">
                 <p className="text-base text-gray-600">Related works</p>
-                <ul className="flex overflow-x-auto">
+                <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
                     {relatedWorks.map((work) => (
-                        <li key={work.key}>
+                        <li key={work.key} className="max-w-[360px]">
                             <WorkSnippet work={work} />
                         </li>
                     ))}

@@ -9,6 +9,4 @@ interface WorkSnippetProps {
     cover_i?: string,
 }
 
-type SearchType = "title" | "text" | "author";
-
-export type { WorkSnippetProps, SearchType }
+export type { WorkSnippetProps }

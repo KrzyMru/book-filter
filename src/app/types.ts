@@ -18,6 +18,7 @@ interface AuthorSnippet {
     birth_date?: string,
     death_date?: string,
     top_work?: string,
+    top_subjects?: string[],
     work_count?: number,
     ratings_average?: number,
     ratings_count?: number,

@@ -5,11 +5,11 @@ const Loading = () => {
         <div className="h-full flex flex-col overflow-y-auto">
 
             <div className="mt-4 mx-5 mb-5">
-                <div className="mb-1 h-[24px] bg-gray-200 animate-pulse" />
-                <div className="mb-1 h-[18px] bg-gray-200 animate-pulse" />
-                <ul className="flex overflow-x-auto">
-                    {Array.from({ length: 10 }, (_, i) => (
-                        <li key={i}>
+                <div className="mb-1 w-[150px] h-[24px] bg-gray-200 animate-pulse" />
+                <div className="mb-1 w-[200px] h-[18px] bg-gray-200 animate-pulse" />
+                <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+                    {Array.from({ length: 8 }, (_, i) => (
+                        <li key={i} className="max-w-[360px]">
                             <WorkSnippetSkeleton />
                         </li>
                     ))}
@@ -17,11 +17,11 @@ const Loading = () => {
             </div>
 
             <div className="mt-4 mx-5 mb-5">
-                <div className="mb-1 h-[24px] bg-gray-200 animate-pulse" />
-                <div className="mb-1 h-[18px] bg-gray-200 animate-pulse" />
-                <ul className="flex overflow-x-auto">
-                    {Array.from({ length: 10 }, (_, i) => (
-                        <li key={i}>
+                <div className="mb-1 w-[150px] h-[24px] bg-gray-200 animate-pulse" />
+                <div className="mb-1 w-[200px] h-[18px] bg-gray-200 animate-pulse" />
+                <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+                    {Array.from({ length: 8 }, (_, i) => (
+                        <li key={i} className="max-w-[360px]">
                             <WorkSnippetSkeleton />
                         </li>
                     ))}
@@ -29,11 +29,11 @@ const Loading = () => {
             </div>
 
             <div className="mt-4 mx-5 mb-5">
-                <div className="mb-1 h-[24px] bg-gray-200 animate-pulse" />
-                <div className="mb-1 h-[18px] bg-gray-200 animate-pulse" />
-                <ul className="flex overflow-x-auto">
-                    {Array.from({ length: 10 }, (_, i) => (
-                        <li key={i}>
+                <div className="mb-1 w-[150px] h-[24px] bg-gray-200 animate-pulse" />
+                <div className="mb-1 w-[200px] h-[18px] bg-gray-200 animate-pulse" />
+                <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+                    {Array.from({ length: 8 }, (_, i) => (
+                        <li key={i} className="max-w-[360px]">
                             <WorkSnippetSkeleton />
                         </li>
                     ))}
@@ -41,11 +41,11 @@ const Loading = () => {
             </div>
 
             <div className="mt-4 mx-5 mb-5">
-                <div className="mb-1 h-[24px] bg-gray-200 animate-pulse" />
-                <div className="mb-1 h-[18px] bg-gray-200 animate-pulse" />
-                <ul className="flex overflow-x-auto">
-                    {Array.from({ length: 10 }, (_, i) => (
-                        <li key={i}>
+                <div className="mb-1 w-[150px] h-[24px] bg-gray-200 animate-pulse" />
+                <div className="mb-1 w-[200px] h-[18px] bg-gray-200 animate-pulse" />
+                <ul className="grid grid-cols-1 2xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+                    {Array.from({ length: 8 }, (_, i) => (
+                        <li key={i} className="max-w-[360px]">
                             <WorkSnippetSkeleton />
                         </li>
                     ))}

@@ -11,7 +11,7 @@ const EditionSnippet = ({ edition }: { edition: EditionSnippetProps }) => {
             title={edition.title}
             href={edition.key}
         >
-            <div className="relative w-[120px] aspect-[2/3]">
+            <div className="relative w-[120px] aspect-[2/3] self-center">
                 <Image 
                     src={
                         bestCover ? 
@@ -24,11 +24,11 @@ const EditionSnippet = ({ edition }: { edition: EditionSnippetProps }) => {
                 />
             </div>
             <div className="flex flex-col mt-1">
-                <p className="text-sm text-gray-900">{edition.edition_name}</p>
-                <p className="text-sm text-gray-600 line-clamp-2">
+                <p className="text-sm text-center text-gray-900">{edition.edition_name}</p>
+                <p className="text-sm text-center text-gray-600 line-clamp-2">
                     {edition.publishers?.join(', ')}
                 </p>
-                <p className="text-sm text-gray-600">{edition.publish_date}</p>
+                <p className="text-sm text-center text-gray-600">{edition.publish_date}</p>
             </div>
         </Link>
     );
