@@ -25,9 +25,6 @@ const Page = async () => {
       <TrendingReads />
       <MostWidelyRead />
       <RandomDaily />
-      <footer>
-        <p className="text-xs">Top logo designed by vectorjuice / Freepik</p>
-      </footer>
     </div>
   );
 }
