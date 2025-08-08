@@ -2,6 +2,7 @@ import Link from "next/link";
 import WorkSnippet from "../work-snippet";
 import { WorkSearchResponse } from "@/app/types";
 import { WorkSnippetProps } from "../types";
+import SeeMoreSnippet from "../see-more-snippet";
 
 const NewestWorks = async () => {
   let newestWorksResponse: Response;
@@ -32,17 +33,7 @@ const NewestWorks = async () => {
           </li>
         ))}
         <li key="moreNewest">
-          <Link
-            className="cursor-pointer group"
-            href={`/search?ratings_min=10&publish_year_min=${new Date().getFullYear()-1}&sort=reading log&page=1`}
-            title="See more"
-          >
-            <div className="w-full flex justify-center">
-              <div className="mt-3 w-[140px] h-[210px] flex justify-center items-center rounded-tr-xl rounded-br-xl bg-gray-200 shadow-sm [transition:scale_350ms] group-hover:scale-103">
-                <p className="text-xl text-gray-600 font-semibold">See more</p>
-              </div>
-            </div>
-          </Link>
+          <SeeMoreSnippet link={`/search?ratings_min=10&publish_year_min=${new Date().getFullYear()-1}&sort=reading log&page=1`} />
         </li>
       </ul>
     </div>

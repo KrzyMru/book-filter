@@ -45,7 +45,7 @@ const RangeFilter = (props: RangeFilterProps) => {
                     <div
                         {...props}
                         key={props.key}
-                        className="flex justify-center items-center h-[28px] w-[28px] rounded-sm bg-white shadow-md"
+                        className="flex justify-center items-center h-[28px] w-[28px] rounded-sm bg-white shadow-md focus:outline-3"
                     >
                         <div className={`absolute top-[-28px] text-white font-semibold text-base px-1 rounded-sm ${isDragged ? "bg-sky-500" : "bg-sky-400"}`}>
                             {maxAsterisk && values[index] === max ? "*" : values[index]}

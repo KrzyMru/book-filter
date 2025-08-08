@@ -16,7 +16,7 @@ const Pagination = (props: PaginationProps) => {
         return (
             <Link 
                 href={`/search?query=${parsedQuery}${parsedFilters}&sort=${sort}${parsedSortDirection}&page=${innerPage}`}
-                className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100`}
+                className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100 focus:outline-3`}
             >
                 {innerPage}
             </Link> 

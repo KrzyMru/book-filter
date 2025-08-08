@@ -135,7 +135,7 @@ const NavigationBar = () => {
                                 className="flex-1 bg-white p-2 pr-9 rounded-xl text-gray-900 border-2 border-gray-400 outline-none focus:shadow-md"
                             />
                             <button
-                                className="absolute top-1/2 -translate-y-1/2 right-1 flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md"
+                                className="absolute top-1/2 -translate-y-1/2 right-1 flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md focus:outline-3"
                                 title="Search"
                                 onClick={handleSearch}
                             >
@@ -147,7 +147,7 @@ const NavigationBar = () => {
                             </button>
                         </div>
                         <button
-                            className="flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md"
+                            className="flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md focus:outline-3"
                             title="Clear search"
                             onClick={handleClearSearch}
                         >
@@ -158,7 +158,7 @@ const NavigationBar = () => {
                             />
                         </button>
                         <button
-                            className="flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md"
+                            className="flex bg-gray-100 border-2 border-gray-400 items-center p-1 h-fit self-center rounded-full cursor-pointer shrink-0 hover:shadow-md focus:outline-3"
                             title="Hide search"
                             onClick={() => setSearchOpen(false)}
                         >
@@ -172,7 +172,7 @@ const NavigationBar = () => {
                     <div className="flex justify-between flex-wrap gap-1">
                         <div className="flex gap-1">
                             <button
-                                className="w-[180px] flex items-center bg-amber-100 p-2 rounded-xl border-2 border-gray-400 cursor-pointer hover:shadow-md"
+                                className="w-[180px] flex items-center bg-amber-100 p-2 rounded-xl border-2 border-gray-400 cursor-pointer hover:shadow-md focus:outline-3"
                                 title="Sort type"
                                 onClick={handleCycleSorts}
                             >
@@ -184,7 +184,7 @@ const NavigationBar = () => {
                                 <p className="text-base text-gray-900 font-semibold first-letter:uppercase">{sort}</p>
                             </button>
                             <button
-                                className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 ${sortsWithDirection.includes(sort) ? 'bg-amber-100 cursor-pointer' : 'bg-gray-200 cursor-default pointer-events-none'} hover:shadow-md`}
+                                className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 ${sortsWithDirection.includes(sort) ? 'bg-amber-100 cursor-pointer' : 'bg-gray-200 cursor-default pointer-events-none'} hover:shadow-md focus:outline-3`}
                                 title="Sort direction"
                                 onClick={handleCycleSortDirections}
                             >
@@ -202,7 +202,7 @@ const NavigationBar = () => {
                             </button>
                         </div>
                         <button
-                            className="w-fit flex items-center bg-orange-200 p-2 rounded-xl border-2 border-gray-400 cursor-pointer hover:shadow-md"
+                            className="w-fit flex items-center bg-orange-200 p-2 rounded-xl border-2 border-gray-400 cursor-pointer hover:shadow-md focus:outline-3"
                             title="Toggle filter panel"
                             onClick={() => setFiltersOpen(!filtersOpen)}
                         >
@@ -216,10 +216,10 @@ const NavigationBar = () => {
                     </div>
                 </div>
             </div>
-            <div className={`flex flex-col gap-1 border-gray-300 overflow-y-auto transition-[max-height,padding,border-width,opacity] duration-350 ${searchOpen && filtersOpen ? 'border-t-2 max-h-100 p-3 opacity-100' : 'border-t-0 max-h-0 p-0 opacity-0'}`}>
+            <div inert={!(searchOpen && filtersOpen)} className={`flex flex-col gap-1 border-gray-300 overflow-y-auto transition-[max-height,padding,border-width,opacity] duration-350 ${searchOpen && filtersOpen ? 'border-t-2 max-h-100 p-3 opacity-100' : 'border-t-0 max-h-0 p-0 opacity-0'} focus:outline-3`}>
                 <div className="flex flex-wrap gap-1">
                     <button
-                        className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 cursor-pointer ${filterWithAuthor ? 'bg-green-200' : filterWithAuthor === false ? 'bg-red-200' : 'bg-gray-200'} hover:shadow-md`}
+                        className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 cursor-pointer ${filterWithAuthor ? 'bg-green-200' : filterWithAuthor === false ? 'bg-red-200' : 'bg-gray-200'} hover:shadow-md focus:outline-3`}
                         title={filterWithAuthor ? 'Only works that have an author' : filterWithAuthor === false ? 'Only works that don\'t have an author' : 'Works may lack an author'}
                         onClick={handleCycleAllowedAuthor}
                     >
@@ -231,7 +231,7 @@ const NavigationBar = () => {
                         <p className="text-base text-gray-900 font-semibold w-[60px]">Author</p>
                     </button>
                     <button
-                        className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 cursor-pointer ${filterWithCover ? 'bg-green-200' : filterWithCover === false ? 'bg-red-200' : 'bg-gray-200'} hover:shadow-md`}
+                        className={`w-fit flex items-center p-2 rounded-xl border-2 border-gray-400 cursor-pointer ${filterWithCover ? 'bg-green-200' : filterWithCover === false ? 'bg-red-200' : 'bg-gray-200'} hover:shadow-md focus:outline-3`}
                         title={filterWithCover ? 'Only works that have a cover' : filterWithCover === false ? 'Only works that don\'t have a cover' : 'Works may lack a cover'}
                         onClick={handleCycleAllowedCover}
                     >
@@ -328,7 +328,7 @@ const NavigationBar = () => {
             </div>
             <div className={`${searchOpen ? 'hidden' : 'flex'} justify-between items-center px-3 py-4`}>
                 <button 
-                    className="cursor-pointer shrink-0"
+                    className="cursor-pointer shrink-0 outline-gray-900 focus-visible:outline-3"
                     onClick={() => setSearchOpen(true)}
                     type="button"
                     title="Search works"
@@ -341,11 +341,11 @@ const NavigationBar = () => {
                 </button>
                 <Link 
                     href={"/"}
-                    className="text-2xl font-bold text-gray-900 px-2"
+                    className="text-2xl text-gray-900 font-serif tracking-wider px-2 outline-gray-900 focus-visible:outline-3"
                 >
                     book-filter
                 </Link>
-                <div className="size-[28px]"></div>
+                <div className="size-[28px]" />
             </div>
         </nav>
     );

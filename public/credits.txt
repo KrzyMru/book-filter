@@ -1,0 +1,3 @@
+Image attributions:
+dashboard-logo: https://www.freepik.com/author/vectorjuice
+dashboard-logo-background: https://www.freepik.com/author/creative-hat

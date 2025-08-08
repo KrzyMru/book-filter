@@ -60,7 +60,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>}) => {
                             <Link
                                 href={`/authors/${author.key}`}
                                 title={`See more information about ${author.name}`}
-                                className="text-lg text-gray-600 hover:underline"
+                                className="text-lg text-gray-600 hover:underline focus:outline-3"
                             >
                                 {author.name}
                             </Link>

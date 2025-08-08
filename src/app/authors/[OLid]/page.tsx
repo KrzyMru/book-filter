@@ -8,6 +8,7 @@ import Eye from "../../components/assets/eye.svg";
 import ClientRating from "@/app/components/client-rating";
 import { WorkSnippetProps } from "@/app/components/types";
 import WorkSnippet from "@/app/components/work-snippet";
+import SeeMoreSnippet from "@/app/components/see-more-snippet";
 
 const Page = async ({ params }: { params: Promise<{ OLid: string }>,
 }) => {
@@ -104,7 +105,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                                     <Link
                                         href={`/search?subjects=${subject}&sort=rating&sort_direction=desc&page=1`}
                                         title={subject}
-                                        className="text-base font-semibold whitespace-nowrap text-gray-900 mr-4 underline decoration-2 underline-offset-5 decoration-green-500 hover:decoration-green-300"
+                                        className="text-base font-semibold whitespace-nowrap text-gray-900 mr-4 underline decoration-2 underline-offset-5 decoration-green-500 hover:decoration-green-300 focus:outline-3"
                                     >
                                         {subject}
                                     </Link>
@@ -236,17 +237,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                             ))
                         }
                         <li key="moreWorks">
-                            <Link
-                                className="cursor-pointer group"
-                                href={`/search?author_key=${OLid}&sort=reading log&page=1`}
-                                title="See more"
-                            >
-                                <div className="w-full flex justify-center">
-                                <div className="mt-3 w-[140px] h-[210px] flex justify-center items-center rounded-tr-xl rounded-br-xl bg-gray-200 shadow-sm [transition:scale_350ms] group-hover:scale-103">
-                                    <p className="text-xl text-gray-600 font-semibold">See more</p>
-                                </div>
-                                </div>
-                            </Link>
+                            <SeeMoreSnippet link={`/search?author_key=${OLid}&sort=reading log&page=1`} />
                         </li>
                     </ul>
                 </div>   

@@ -75,7 +75,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                                 <Link
                                     href={`/authors/${author.key}`}
                                     title={`See more information about ${author.name}`}
-                                    className="text-lg text-gray-600 hover:underline"
+                                    className="text-lg text-gray-600 hover:underline focus:outline-3"
                                 >
                                     {author.name}
                                 </Link>
@@ -111,7 +111,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                                     <Link
                                         href={`/search?subjects=${subject}&sort=rating&sort_direction=desc&page=1`}
                                         title={subject}
-                                        className="text-base font-semibold whitespace-nowrap text-gray-900 mr-4 underline decoration-2 underline-offset-5 decoration-green-500 hover:decoration-green-300"
+                                        className="text-base font-semibold whitespace-nowrap text-gray-900 mr-4 underline decoration-2 underline-offset-5 decoration-green-500 hover:decoration-green-300 focus:outline-3"
                                     >
                                         {subject}
                                     </Link>
@@ -168,7 +168,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                                         <Link
                                             href={`/authors/${author.key}`}
                                             title={`See more information about ${author.name}`}
-                                            className="text-sm text-gray-600 mt-2 w-fit hover:underline"
+                                            className="text-sm text-gray-600 mt-2 w-fit hover:underline focus:outline-3"
                                         >
                                             {author.name}
                                         </Link>

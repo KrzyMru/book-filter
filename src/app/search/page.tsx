@@ -3,7 +3,7 @@ import { WorkSearchResponse } from "@/app/types";
 import Pagination from "./components/pagination";
 import { Suspense } from "react";
 import { FilterRanges, SearchParams } from "./types";
-import PageSkeleton from "./components/page-skeleton";
+import Loading from "./loading";
 import WorkSnippetRectangle from "../components/work-snippet-rectangle";
 import TranslateSortType from "./utils/translate-sort-type";
 
@@ -15,7 +15,7 @@ const PageWrapper = async ({ searchParams }: { searchParams: Promise<SearchParam
     return (
         <Suspense 
             key={suspenseKey} 
-            fallback={<PageSkeleton />}
+            fallback={<Loading />}
         >
             <Page { ...props }/>
         </Suspense>

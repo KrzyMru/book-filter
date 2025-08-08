@@ -1,6 +1,6 @@
 import WorkSnippetRectangleSkeleton from "@/app/components/work-snippet-rectangle-skeleton";
 
-const PageSkeleton = () => {
+const Loading = () => {
     return (
         <div className="h-full flex flex-col justify-between">
             <div className="px-5 py-3 overflow-y-auto">
@@ -27,4 +27,4 @@ const PageSkeleton = () => {
     );
 }
 
-export default PageSkeleton;
+export default Loading;
