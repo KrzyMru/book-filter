@@ -9,7 +9,7 @@ import ClientRating from "./client-rating";
 const WorkSnippet = ({ work }: { work: WorkSnippetProps }) => {
     return (
         <Link
-            className="flex h-full flex-col cursor-pointer rounded-br-xl rounded-tr-xl group p-3 outline-none focus:inset-ring-3"
+            className="flex h-full flex-col cursor-pointer rounded-xl group p-3 outline-none focus:inset-ring-3"
             title={work.title}
             href={work.key}
         >

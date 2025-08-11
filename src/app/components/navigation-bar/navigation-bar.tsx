@@ -52,8 +52,10 @@ const NavigationBar = () => {
 
     const handleClearSearch = () => {
         setSearchText("");
-        setFilterWithAuthor(true);
-        setFilterWithCover(true);
+        setSort("relevance");
+        setSortDirection("desc");
+        setFilterWithAuthor(null);
+        setFilterWithCover(null);
         setFilterAuthor("");
         setFilterSubject("");
         setFilterPerson("");
@@ -120,7 +122,7 @@ const NavigationBar = () => {
     const finalSearchPath = `/search?query=${searchText}${unifiedFilterString}&sort=${sort}${parsedSortDirection}&page=1`;
 
     return (
-        <nav className="w-full bg-stone-200 border-b-2 border-gray-300 sticky top-0 z-999">
+        <nav className="w-full bg-stone-100 border-b-2 border-gray-300 sticky top-0 z-999">
             <div className={`px-3 py-2 ${searchOpen ? 'block' : 'hidden'}`}>
                 <div className="flex flex-col gap-1 md:flex-row">
                     <div className="flex-1 flex flex-wrap gap-1">

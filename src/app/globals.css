@@ -4,4 +4,39 @@
 @theme {
     --breakpoint-xs: 30rem;
     --breakpoint-2xs: 25rem;
+
+    --animate-slide-in-header: slide-in 700ms ease-in-out forwards;  
+    --animate-slide-in-work: slide-in 400ms ease-in-out 250ms forwards;  
+    --animate-fade-in-background: fade-in 800ms ease-in-out forwards; 
+    --animate-fade-in-logo-delay: fade-in 600ms ease-in-out 800ms forwards; 
+    --animate-fade-in-logo: fade-in 600ms ease-in-out forwards; 
+    --animate-fade-out-logo: fade-out 600ms ease-in-out forwards; 
+    --animate-fade-in-logo-text: fade-in 400ms ease-in-out 1200ms forwards; 
+    
+    @keyframes slide-in {
+        0% {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        100% { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% { 
+            opacity: 1;
+        }
+    }
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% { 
+            opacity: 0;
+        }
+    }
 }

@@ -16,7 +16,7 @@ const Pagination = (props: PaginationProps) => {
         return (
             <Link 
                 href={`/search?query=${parsedQuery}${parsedFilters}&sort=${sort}${parsedSortDirection}&page=${innerPage}`}
-                className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-gray-100 focus:outline-3`}
+                className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-sky-50 focus:outline-3`}
             >
                 {innerPage}
             </Link> 
@@ -24,7 +24,7 @@ const Pagination = (props: PaginationProps) => {
     }
    
     return (
-        <nav className="flex gap-1 justify-center items-center sticky bottom-0 bg-stone-200 border-t-2 border-gray-300 p-2">
+        <nav className="flex gap-1 justify-center items-center sticky bottom-0 bg-stone-100 border-t-2 border-gray-300 p-2">
             {
                 totalPages < 8 ?
                 Array.from({ length: totalPages }, (_, i) => (
@@ -36,14 +36,14 @@ const Pagination = (props: PaginationProps) => {
                     {Array.from({ length: 4 }, (_, i) => (
                         <Page key={i+1} innerPage={i+1} />
                     ))}
-                    <p className="mx-3">...</p>
+                    <p className="mx-3 select-none">...</p>
                     <Page innerPage={totalPages} />
                 </>
                 :
                 page > totalPages - 3 ?
                 <> 
                     <Page innerPage={1} />
-                    <p className="mx-3">...</p>
+                    <p className="mx-3 select-none">...</p>
                     {Array.from({ length: 4 }, (_, i) => (
                         <Page key={totalPages-(i)} innerPage={totalPages-(i)} />
                     )).reverse()}
@@ -51,11 +51,11 @@ const Pagination = (props: PaginationProps) => {
                 :
                 <>
                     <Page innerPage={1} />
-                    <p className="mx-3">...</p>
+                    <p className="mx-3 select-none">...</p>
                     <Page innerPage={page-1} />
                     <Page innerPage={page} />
                     <Page innerPage={page+1} />
-                    <p className="mx-3">...</p>
+                    <p className="mx-3 select-none">...</p>
                     <Page innerPage={totalPages} />
                 </>
 
