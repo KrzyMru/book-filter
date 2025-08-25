@@ -1,6 +1,7 @@
 'use client'
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import getAnimation from "./utils/get-animation";
 
 const SlideInWrapper = ({ 
     children, 
@@ -17,10 +18,7 @@ const SlideInWrapper = ({
         triggerOnce: true
     });
 
-    const animation = 
-        variant === 'header' ? 'animate-slide-in-header' :
-        variant === 'work' ? 'animate-slide-in-work' : 
-        '';
+    const animation = getAnimation(variant);
 
     return (
         <div 

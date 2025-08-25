@@ -62,7 +62,7 @@ const Page = async ({ params }: { params: Promise<{ OLid: string }>,
                             `https://covers.openlibrary.org/b/id/${workSnippet.cover_i}-L.jpg?default=false` :
                             "/fallback-cover.jpg"
                         }
-                        alt="Edition cover"
+                        alt="Work cover"
                         fill
                         className="rounded-br-xl rounded-tr-xl shadow-lg"
                     />

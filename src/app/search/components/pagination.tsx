@@ -10,12 +10,13 @@ const Pagination = (props: PaginationProps) => {
         .map(([key, value]) => `${key}=${value}`)
         .join('&');
     const parsedFilters = filterString ? '&'+filterString : "";
+    const parsedSort = sort ? `&sort=${sort}` : "";
     const parsedSortDirection = sort_direction ? `&sort_direction=${sort_direction}` : "";
 
     const Page = ({ innerPage } : { innerPage: number }) => {
         return (
             <Link 
-                href={`/search?query=${parsedQuery}${parsedFilters}&sort=${sort}${parsedSortDirection}&page=${innerPage}`}
+                href={`/search?query=${parsedQuery}${parsedFilters}${parsedSort}${parsedSortDirection}&page=${innerPage}`}
                 className={`rounded-full border-1 border-gray-300 py-2 px-4 ${innerPage === page ? 'bg-sky-100 pointer-events-none font-bold' : 'bg-gray-50 font-semibold'} hover:bg-sky-50 focus:outline-3`}
             >
                 {innerPage}

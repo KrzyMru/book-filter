@@ -30,7 +30,7 @@ const WorkSnippetRectangle = ({ work }: { work: WorkSnippetProps }) => {
                 <div>
                     <div className="flex items-center gap-3">
                         <div className="flex flex-col">
-                            <p className="text-base text-gray-900 font-semibold -mb-1">{work.ratings_average ? work.ratings_average.toFixed(2) : 0}</p>
+                            <p className="text-base text-gray-900 font-semibold -mb-1" data-testid="ratingsAverage">{work.ratings_average ? work.ratings_average.toFixed(2) : 0}</p>
                             <div className="flex items-center gap-2">
                                 <ClientRating
                                     className="inline size-[18px] -mt-2"

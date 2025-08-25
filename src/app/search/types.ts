@@ -15,8 +15,8 @@ interface SearchParams {
     pages_max?: string,
     publish_year_min?: string,
     publish_year_max?: string,
-    sort?: userSortType,
-    sort_direction?: sortDirection,
+    sort?: string,
+    sort_direction?: string,
     page?: string,
 }
 

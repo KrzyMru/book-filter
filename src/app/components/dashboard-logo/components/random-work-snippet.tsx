@@ -29,7 +29,7 @@ const RandomWorkSnippet = ({ work }: { work: WorkSnippetProps }) => {
                         initialValue={work.ratings_average ?? 0}
                         className="inline size-[18px] -mt-2"
                     />
-                    <p className="text-sm text-gray-900 font-semibold">{work.ratings_average ? work.ratings_average.toFixed(2) : 0}</p>
+                    <p className="text-sm text-gray-900 font-semibold" data-testid="ratingsAverage">{work.ratings_average ? work.ratings_average.toFixed(2) : 0}</p>
                 </div>
             </div>
         </Link>
