@@ -1,11 +1,3 @@
-import Image from "next/image";
-import type { WorkSnippetProps } from "./types";
-import Eye from "./assets/eye.svg";
-import Bookshelf from "./assets/bookshelf.svg";
-import BookOpen from "./assets/book-open.svg";
-import Link from "next/link";
-import ClientRating from "./client-rating";
-
 const WorkSnippetRectangleSkeleton = () => {
     return (
         <div className="flex h-full p-3 outline-none">

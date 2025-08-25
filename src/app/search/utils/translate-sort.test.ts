@@ -36,17 +36,17 @@ describe(translateSort.name, () => {
     });
 
     it("handles edge cases correctly", () => {
-        expect(translateSort('randomString' as any)).toBe('');
-        expect(translateSort('randomString' as any, 'desc')).toBe('');
-        expect(translateSort('randomString' as any, 'asc')).toBe('');
-        expect(translateSort('randomString' as any, 'randomString' as any)).toBe('');
-        expect(translateSort('rating', 'randomString' as any)).toBe('rating desc');
-        expect(translateSort('trending', 'randomString' as any)).toBe('trending desc');
-        expect(translateSort('publish year', 'randomString' as any)).toBe('new');
+        expect(translateSort('randomString')).toBe('');
+        expect(translateSort('randomString', 'desc')).toBe('');
+        expect(translateSort('randomString', 'asc')).toBe('');
+        expect(translateSort('randomString', 'randomString')).toBe('');
+        expect(translateSort('rating', 'randomString')).toBe('rating desc');
+        expect(translateSort('trending', 'randomString')).toBe('trending desc');
+        expect(translateSort('publish year', 'randomString')).toBe('new');
         expect(translateSort()).toBe('');
         expect(translateSort(undefined, 'desc')).toBe('');
         expect(translateSort(undefined, 'asc')).toBe('');
-        expect(translateSort(undefined, 'randomString' as any)).toBe('');
+        expect(translateSort(undefined, 'randomString')).toBe('');
     });
 
 });

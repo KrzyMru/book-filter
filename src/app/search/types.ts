@@ -1,5 +1,3 @@
-import { userSortType } from "../components/navigation-bar/types";
-
 interface SearchParams {
     query?: string,
     author?: string,

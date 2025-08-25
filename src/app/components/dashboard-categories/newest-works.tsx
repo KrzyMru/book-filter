@@ -1,4 +1,3 @@
-import Link from "next/link";
 import WorkSnippet from "../work-snippet";
 import { WorkSearchResponse } from "@/app/types";
 import { WorkSnippetProps } from "../types";
